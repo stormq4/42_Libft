@@ -6,7 +6,7 @@
 /*   By: sde-quai <sde-quai@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/02 12:54:50 by sde-quai      #+#    #+#                 */
-/*   Updated: 2021/12/02 12:54:51 by sde-quai      ########   odam.nl         */
+/*   Updated: 2021/12/17 10:16:57 by sde-quai      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ char	*ft_itoa_fill(char	*str, int n, int pow, int i)
 {
 	while (pow)
 	{
-		str[i] = n / ft_power(10, pow - 1) + '0';
-		n %= ft_power(10, pow - 1);
+		str[i] = n / (int)ft_power(10, pow - 1) + '0';
+		n %= (int)ft_power(10, pow - 1);
 		pow--;
 		i++;
 	}

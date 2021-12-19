@@ -6,15 +6,17 @@
 /*   By: sde-quai <sde-quai@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/02 12:54:09 by sde-quai      #+#    #+#                 */
-/*   Updated: 2021/12/02 13:09:10 by sde-quai      ########   odam.nl         */
+/*   Updated: 2021/12/17 10:14:13 by sde-quai      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
+#include <limits.h>
 
-int	ft_power(int ground, int power)
+long long	ft_power(int ground, int power)
 {
-	int	value;
+	long long	value;
 
 	value = 1;
 	if (power < 0)
@@ -29,10 +31,10 @@ int	ft_power(int ground, int power)
 	return (value);
 }
 
-int	ft_atoi_calc(const char *str, int len)
+long long	ft_atoi_calc(const char *str, int len)
 {
-	int	i;
-	int	atoi;
+	int			i;
+	long long	atoi;
 
 	i = 0;
 	atoi = 0;
@@ -43,6 +45,21 @@ int	ft_atoi_calc(const char *str, int len)
 		len--;
 	}
 	return (atoi);
+}
+
+static void	error_message(void)
+{
+	ft_putstr_fd("Error\n", 2);
+	exit(1);
+}
+
+int	check_atoi_int(long long ll_atoi)
+{
+	if (ll_atoi > INT_MAX)
+		error_message();
+	else if (ll_atoi < INT_MIN)
+		error_message();
+	return ((int)ll_atoi);
 }
 
 int	ft_atoi(const char *str)
@@ -68,5 +85,5 @@ int	ft_atoi(const char *str)
 			break ;
 		i++;
 	}
-	return (ft_atoi_calc(str, i) * neg);
+	return (check_atoi_int(ft_atoi_calc(str, i) * neg));
 }
