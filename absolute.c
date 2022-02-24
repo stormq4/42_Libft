@@ -1,37 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_putnbr_fd.c                                     :+:    :+:            */
+/*   absolute.c                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: sde-quai <sde-quai@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/12/02 12:56:22 by sde-quai      #+#    #+#                 */
-/*   Updated: 2022/01/12 11:34:03 by stormdequay   ########   odam.nl         */
+/*   Created: 2022/01/27 15:51:24 by sde-quai      #+#    #+#                 */
+/*   Updated: 2022/02/02 09:26:17 by sde-quai      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	ft_putnbr_rec(long long n, int fd)
+float	absolute_float(float abs)
 {
-	if (n >= 10)
-	{
-		ft_putnbr_rec(n / 10, fd);
-		ft_putchar_fd(n % 10 + '0', fd);
-	}
-	if (n < 10)
-		ft_putchar_fd(n + '0', fd);
+	if (abs < 0)
+		abs = -abs;
+	return (abs);
 }
 
-void	ft_putnbr_fd(int n, int fd)
+int	absolute_int(int abs)
 {
-	long long	nbr;
+	if (abs < 0)
+		abs = -abs;
+	return (abs);
+}
 
-	nbr = n;
-	if (n < 0)
-	{
-		nbr = -nbr;
-		ft_putchar_fd('-', fd);
-	}
-	ft_putnbr_rec(nbr, fd);
+long	absolute_long(long abs)
+{
+	if (abs < 0)
+		abs = -abs;
+	return (abs);
 }
