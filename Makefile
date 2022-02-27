@@ -76,9 +76,11 @@ all : $(NAME)
 
 %.o : %.c $(HEADFILES)
 	@$(CC) -c $(CFLAGS) -o $@ $<
+	
 
 
 $(NAME): $(ALL_OBJS)
+	@echo $(GREEN)"Object files created [OK]"
 	@ar -ru $(NAME) $^
 
 bonus:
@@ -86,11 +88,11 @@ bonus:
 
 clean:
 	@rm -f $(OBJS) $(OBJS_BONUS)
-	@echo $(GREEN) "Deleting object files from libft"
+	@echo $(RED) "Deleting object files from libft"
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo $(GREEN) "Deleting library file libft.a"
+	@echo $(RED) "Deleting library file libft.a"
 
 re: fclean all
 
